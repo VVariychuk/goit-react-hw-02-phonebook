@@ -1,4 +1,5 @@
-import React, { Component}from 'react';
+import React, { Component } from 'react';
+import styles from './AddContactsForm.module.css'
 
 export default class AddContactsForm extends Component {
  
@@ -19,10 +20,13 @@ export default class AddContactsForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}
+                className={styles.form}
+            >
               <label>
                     Name
                 <input
+                        className={styles.input}
                   value={ this.state.name}
                   onChange={this.handleChange}
                   type="text"
@@ -31,8 +35,7 @@ export default class AddContactsForm extends Component {
                   title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
                   required
                 />
-              </label>
-              <br/>
+              </label>              
               <label>
                     Number
                 <input
@@ -45,7 +48,12 @@ export default class AddContactsForm extends Component {
                   required
                 />
                 </label>
-                <button type="submit">Add contact</button>
+                <button
+                    type="submit"
+                    className={styles.btnAdd}
+                >
+                Add contact
+                </button>
            </form>  
         )
     }

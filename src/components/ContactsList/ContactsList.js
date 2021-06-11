@@ -1,22 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './ContactsList.module.css';
+
+import ContactsListItm from './ContactsListItm'
 
 export default function ContactsList({ contacts, onDeleteContact }) {
     return (
-        <ul>
+        <>
+            {contacts.length ?
+                <ul className={styles.contactsList}>
             {contacts.map(({ id, name, number }) => (
-                <li key={id}>                    
-                    {name}: {number}
-                    <button
-                        typy="button"
-                        onClick={()=>onDeleteContact(id)}
-                    >                       
-                        Delete
-                    </button>
-               </li> 
+                <ContactsListItm
+                    key={id}
+                    name={name}
+                    number={number}
+                    onClickHendler={()=>onDeleteContact(id)}
+                />             
             ))
             }
-        </ul>
+                </ul> :
+                <p>No contacts added</p>
+        }
+      </>  
     )
 };
 
