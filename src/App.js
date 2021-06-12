@@ -48,7 +48,7 @@ class App extends Component {
   
 
   render() {
-    const { filter} = this.state;
+    const {contacts, filter} = this.state;
     return (
       <Container >
         <Section
@@ -62,10 +62,13 @@ class App extends Component {
           title={'Contacts'}
           children={
             <>
+            {contacts.length ? 
             <Filter
                 value={filter}
                 onFilter={this.onFilterChange}
-            />
+            />: <></> 
+            }
+            
             <ContactList
               contacts={this.onContactsFilter()}
               onDeleteContact={this.DeleteContacts}
